@@ -25,38 +25,15 @@ public class AlignWithPose {
     }
 
     public static Command pathToPoseCommand(Pose2d target, DriveSubsystem driveSubsystem) {
-
-        HolonomicDriveController holonomicDriveController = new HolonomicDriveController(
-                new PIDController(3, 0, 0),
-                new PIDController(3, 0, 0), new ProfiledPIDController(3, 0, 0, new Constraints(3, 3)));
-        holonomicDriveController.setTolerance(new Pose2d(0.1, 0.1, new Rotation2d(10)));
-        
-        
         Command roughAlignmentCommand = AutoBuilder.pathfindToPose(
                 target,
                 PathPlannerConstants.DEFAULT_PATH_CONSTRAINTS,
-                0.0,
-                0.5);
+                0.0);
 
         
-                Command fineAlignmentCommand = new FunctionalCommand(
-                () -> {
-                    UserPolicy.isManualControlled = false;
-                },
-                () -> {
-                    ChassisSpeeds output = holonomicDriveController.calculate(DriveSubsystem.getPose().orElseThrow(),
-                            target, 1,
-                            new Rotation2d(0));
-                    output.div(DrivetrainConstants.MAX_SPEED_METERS_PER_SECOND);
-                    driveSubsystem.runChassisSpeeds(output, false);
+                
 
-                },
-                (interrupted) -> {
-                    UserPolicy.isManualControlled = true;
-                },
-                () -> false);
-
-        return new SequentialCommandGroup(roughAlignmentCommand, fineAlignmentCommand);
+        return new SequentialCommandGroup(roughAlignmentCommand);
     }
 
     public static Command alignWithSpeakerCommand(DriveSubsystem driveSubsystem) {

@@ -99,22 +99,22 @@ public class DriveSubsystem extends SubsystemBase {
                 swerveModules[0] = new SwerveModule(// Front Left
                         RobotConstants.PortConstants.CAN.FRONT_LEFT_DRIVING,
                         RobotConstants.PortConstants.CAN.FRONT_LEFT_TURNING,
-                        RobotConstants.PortConstants.CAN.FRONT_LEFT_STEERING, false);
+                        RobotConstants.PortConstants.CAN.FRONT_LEFT_CANCODER, false);
 
                 swerveModules[1] = new SwerveModule( // Front Right
                         RobotConstants.PortConstants.CAN.FRONT_RIGHT_DRIVING,
                         RobotConstants.PortConstants.CAN.FRONT_RIGHT_TURNING,
-                        RobotConstants.PortConstants.CAN.FRONT_RIGHT_STEERING, false);
+                        RobotConstants.PortConstants.CAN.FRONT_RIGHT_CANCODER, false);
 
                 swerveModules[2] = new SwerveModule( // Rear Left
                         RobotConstants.PortConstants.CAN.REAR_LEFT_DRIVING,
                         RobotConstants.PortConstants.CAN.REAR_LEFT_TURNING,
-                        RobotConstants.PortConstants.CAN.REAR_LEFT_STEERING, false);
+                        RobotConstants.PortConstants.CAN.REAR_LEFT_CANCODER, false);
 
                 swerveModules[3] = new SwerveModule( // Rear Right
                         RobotConstants.PortConstants.CAN.REAR_RIGHT_DRIVING,
                         RobotConstants.PortConstants.CAN.REAR_RIGHT_TURNING,
-                        RobotConstants.PortConstants.CAN.REAR_RIGHT_STEERING, false);
+                        RobotConstants.PortConstants.CAN.REAR_RIGHT_CANCODER, false);
 
                 m_gyro = new AHRS(Port.kMXP);
                 m_gyro.reset();
