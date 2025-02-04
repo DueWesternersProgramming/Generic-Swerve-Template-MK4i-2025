@@ -81,7 +81,7 @@ public class SwerveModule {
                 // Invert the turning controller, since the output shaft rotates in the opposite
                 // direction of
                 // the steering motor.
-                m_turningConfig.inverted(true);
+                m_turningConfig.inverted(false);
                 m_drivingConfig.inverted(drivingInverted);
 
                 // Enable PID wrap around for the turning motor. This will allow the PID
